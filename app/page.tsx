@@ -25,6 +25,7 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react"
+import { GridScan } from "@/components/GridScan"
 
 // Enhanced Particle Animation Component with Dynamic Movement
 const EnhancedParticleBackground = () => {
@@ -597,75 +598,132 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
   const [selectedProject, setSelectedProject] = useState<any>(null)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
   const { scrollYProgress } = useScroll()
   const yRange = useTransform(scrollYProgress, [0, 1], [0, -200])
-  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 })
 
   const projects = [
     {
       id: 1,
-      title: "MG Hair India - E-Commerce Platform",
+      title: "MG Hair Pvt Ltd",
+      category: "E-commerce",
       description:
-        "A premium hair extensions e-commerce platform featuring 100% Remy Indian human hair products. Built with modern design, seamless shopping experience, and integrated payment processing.",
-      image: "/images/mg-hair-project.png",
-      tech: ["React", "Next.js", "Shopify", "Stripe"],
+        "A comprehensive e-commerce solution with advanced product filtering, secure payment integration, and responsive design that increased client sales by 200%.",
+      image: "/images/mghair.png",
+      tech: ["E-commerce", "React", "Next.js"],
       link: "https://mghairindia.com/",
-      github: "https://github.com",
       hasLiveDemo: true,
-      hasCode: true,
     },
     {
       id: 2,
-      title: "Nirvana Organic - Wellness Platform",
+      title: "Nirvana Organics",
+      category: "E-commerce",
       description:
-        "An organic products marketplace promoting wholesome goodness with farm-fresh staples and handcrafted wellness products. Features clean design and sustainable shopping experience.",
-      image: "/images/nirvana-organic-project.png",
-      tech: ["Next.js", "Node.js", "MongoDB", "PayPal"],
+        "A robust organic e-commerce platform featuring product management, order tracking, and secure payment integration.",
+      image: "/images/nirvana.png",
+      tech: ["E-commerce", "Shopify", "React"],
       link: "https://www.nirvanaorganic.in/",
-      github: "https://github.com",
       hasLiveDemo: true,
-      hasCode: true,
     },
     {
       id: 3,
-      title: "Intelligence Educare - Learning Platform",
+      title: "SE Interiors",
+      category: "Interior Design",
       description:
-        "An innovative educational platform currently in development where learning meets innovation. This upcoming project will feature modern course management, interactive learning modules, and seamless user experience for students and educators. Expected launch: Q2 2024.",
-      image: "/images/intelligence-educare-project.png",
-      tech: ["React", "Node.js", "Express", "PostgreSQL"],
-      link: "#",
-      github: "#",
-      hasLiveDemo: false,
-      hasCode: false,
-      status: "In Development",
+        "A modern interior design website with interactive 3D models, project showcases, and client testimonials.",
+      image: "/images/seinteriors.png",
+      tech: ["Interior Design", "Vanilla Code", "HSTS"],
+      link: "https://seinteriors.in/",
+      hasLiveDemo: true,
+    },
+    {
+      id: 4,
+      title: "The Patiala Kitchen",
+      category: "Restaurant",
+      description:
+        "A modern restaurant website that offers a unique dining experience with a user-friendly interface, restaurant menu, and reservation system. Features a blog section and responsive design for all devices.",
+      image: "/images/thepatiala.png",
+      tech: ["Restaurant", "WordPress", "Next.js"],
+      link: "https://thepatialakkitchen.com/",
+      hasLiveDemo: true,
+    },
+    {
+      id: 5,
+      title: "Aggarwa Law Firm",
+      category: "Law",
+      description:
+        "A professional law firm website providing legal services with a team of experienced lawyers. Features contact forms and appointment scheduling functionality.",
+      image: "/images/aggrawal.png",
+      tech: ["Law", "Wix.com", "Next.js"],
+      link: "https://www.aggarwallawfirm.com/",
+      hasLiveDemo: true,
+    },
+    {
+      id: 6,
+      title: "Collection Realty",
+      category: "Real Estate",
+      description:
+        "A real estate platform for buying, selling, and renting properties. Features community networking, property search, listing management, and messaging functionality.",
+      image: "/images/collectionrealty.png",
+      tech: ["Real Estate", "Shopify", "Vue.js"],
+      link: "https://collectionrealty.in/",
+      hasLiveDemo: true,
+    },
+    {
+      id: 7,
+      title: "Hari Om Tours and Travels",
+      category: "Tour & Travel",
+      description:
+        "A tour and travel company website offering various tours and packages. Features online booking, package viewing, and mobile app integration.",
+      image: "/images/hariom.png",
+      tech: ["Tour", "Advanced JS", "Next.js"],
+      link: "https://hariomtoursandtravels.netlify.app/",
+      hasLiveDemo: true,
+    },
+    {
+      id: 8,
+      title: "Growth Associates",
+      category: "Real Estate",
+      description:
+        "A real estate agency website showcasing premium properties in Butibori with elegant design and property listings.",
+      image: "/images/growthassociate.png",
+      tech: ["Real Estate", "Static HTML", "CSS"],
+      link: "https://thegrowthassociate.com",
+      hasLiveDemo: true,
+    },
+    {
+      id: 9,
+      title: "R Bazaar",
+      category: "E-commerce / Furniture",
+      description:
+        "A premium furniture brand e-commerce platform that provides an immersive shopping experience for quality furniture.",
+      image: "/images/rbazaar.png",
+      tech: ["E-commerce", "Express.js", "React + NextJS"],
+      link: "https://rbazaar.in",
+      hasLiveDemo: true,
     },
   ]
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart",
+      name: "Rahul Mehta",
+      role: "Owner, MG Hair India",
       content:
-        "Ronak delivered an exceptional product that exceeded our expectations. His attention to detail and technical expertise is unmatched.",
+        "Ronak built our e-commerce website from scratch. Sales increased by 200% within 3 months. Very professional and delivers on time.",
       rating: 5,
-      avatar: "/placeholder.svg?height=60&width=60",
     },
     {
-      name: "Michael Chen",
-      role: "CTO, InnovateLab",
+      name: "Priya Sharma",
+      role: "Founder, Nirvana Organics",
       content:
-        "Working with Ronak was a game-changer for our startup. He transformed our vision into a stunning, functional reality.",
+        "Our online store looks premium and works flawlessly. Customers love the easy checkout process. Highly recommend his work.",
       rating: 5,
-      avatar: "/placeholder.svg?height=60&width=60",
     },
     {
-      name: "Emily Rodriguez",
-      role: "Product Manager, DesignCo",
+      name: "Vikram Singh",
+      role: "Director, Collection Realty",
       content:
-        "Ronak's creative approach and technical skills make him a rare find. Our project was delivered on time and beyond expectations.",
+        "The property website he created for us gets us quality leads every week. Clean design, fast loading, exactly what we needed.",
       rating: 5,
-      avatar: "/placeholder.svg?height=60&width=60",
     },
   ]
 
@@ -692,10 +750,7 @@ export default function Portfolio() {
     },
   ]
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000)
-    return () => clearTimeout(timer)
-  }, [])
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -732,54 +787,11 @@ export default function Portfolio() {
     }
   }
 
-  // Loading Screen
-  if (isLoading) {
-    return (
-      <motion.div
-        className="fixed inset-0 bg-black flex items-center justify-center z-50"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="text-center">
-          <motion.div
-            className="w-20 h-20 border-4 border-purple-500/30 border-t-purple-500 rounded-full mx-auto mb-8"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          />
-          <motion.h1
-            className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-          >
-            RONAK
-          </motion.h1>
-        </div>
-      </motion.div>
-    )
-  }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Add the optimized animated cursor */}
       <AnimatedCursor />
-
-      {/* Enhanced Particle Background */}
-      <EnhancedParticleBackground />
-      <FloatingShapes />
-
-      {/* Gradient Overlays with Animation */}
-      <motion.div
-        className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20 pointer-events-none"
-        style={{ y: yRange }}
-      />
-      <div className="fixed inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none" />
-
-      {/* Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-blue-500 z-50 origin-left"
-        style={{ scaleX: pathLength }}
-      />
 
       {/* Enhanced Sticky Navigation */}
       <motion.nav
@@ -807,9 +819,8 @@ export default function Portfolio() {
                 <motion.button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-colors relative ${
-                    activeSection === section ? "text-purple-400" : "text-white/70 hover:text-white"
-                  }`}
+                  className={`capitalize transition-colors relative ${activeSection === section ? "text-purple-400" : "text-white/70 hover:text-white"
+                    }`}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: -20 }}
@@ -830,75 +841,82 @@ export default function Portfolio() {
         </div>
       </motion.nav>
 
-      {/* Enhanced Hero Section */}
+      {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center">
+        {/* GridScan Background - Hero Only */}
+        <div className="absolute inset-0 z-0">
+          <GridScan
+            lineThickness={1}
+            linesColor="#392e4e"
+            scanColor="#8B5CF6"
+            scanOpacity={0.5}
+            gridScale={0.12}
+            lineStyle="solid"
+            lineJitter={0.05}
+            scanDirection="pingpong"
+            enablePost={true}
+            bloomIntensity={0.15}
+            bloomThreshold={0.1}
+            bloomSmoothing={0.3}
+            chromaticAberration={0.002}
+            noiseIntensity={0.02}
+            scanGlow={0.6}
+            scanSoftness={2}
+            scanPhaseTaper={0.15}
+            scanDuration={3.0}
+            scanDelay={1.5}
+            sensitivity={0.5}
+            snapBackDelay={300}
+            className="w-full h-full"
+          />
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.h1
-              className="text-6xl md:text-8xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              <TextReveal
-                text="I build digital"
-                className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent block"
-              />
-              <TextReveal
-                text="products that make"
-                className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent block"
-              />
-              <TextReveal
-                text="people stop and stare."
-                className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block"
-              />
-            </motion.h1>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <span className="text-white block">Hi, I'm Ronak</span>
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent block mt-2">
+                Full Stack Developer
+              </span>
+            </h1>
 
-            <motion.div
-              className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-            >
-              <EnhancedTypingAnimation text="Creative web developer crafting exceptional digital experiences with cutting-edge technology and stunning design." />
-            </motion.div>
+            <p className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
+              I build <span className="text-white/80">e-commerce stores</span>, <span className="text-white/80">business websites</span>, 
+              and <span className="text-white/80">web applications</span> that drive results. 
+              With 20+ projects delivered, I help brands establish their online presence 
+              using React, Next.js, and modern web technologies.
+            </p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.5, duration: 0.5 }}
-            >
-              <MagneticButton
-                size="lg"
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-12 py-6 text-lg rounded-full shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 group"
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <motion.button
+                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-lg font-medium rounded-full overflow-hidden shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
                 onClick={() => scrollToSection("contact")}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Work With Me
-                <motion.div className="ml-2 group-hover:translate-x-1 transition-transform" whileHover={{ x: 5 }}>
-                  <ArrowRight className="w-5 h-5" />
-                </motion.div>
-              </MagneticButton>
+                <span className="relative z-10 flex items-center gap-2">
+                  Get in Touch
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.button>
 
               <motion.button
-                className="text-white/70 hover:text-white transition-colors flex items-center gap-2 group"
+                className="group px-8 py-4 text-white/80 text-lg font-medium rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 backdrop-blur-sm transition-all duration-300"
                 onClick={() => scrollToSection("projects")}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <span>View My Work</span>
-                <motion.div
-                  animate={{ y: [0, -3, 0] }}
-                  transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-                >
-                  <Sparkles className="w-4 h-4" />
-                </motion.div>
+                <span className="flex items-center gap-2">
+                  View Projects
+                  <ExternalLink className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+                </span>
               </motion.button>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -1088,6 +1106,15 @@ export default function Portfolio() {
                           whileHover={{ opacity: 1 }}
                           transition={{ duration: 0.3 }}
                         />
+                        {/* Category Badge */}
+                        <div className="absolute top-4 left-4">
+                          <Badge
+                            variant="secondary"
+                            className="bg-gradient-to-r from-purple-600/80 to-blue-600/80 text-white border-0 backdrop-blur-sm px-3 py-1 text-xs font-semibold"
+                          >
+                            {project.category}
+                          </Badge>
+                        </div>
                         <motion.div
                           className="absolute top-4 right-4"
                           initial={{ opacity: 0, scale: 0 }}
@@ -1246,107 +1273,52 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Enhanced Testimonials Section */}
-      <section id="testimonials" className="py-32 relative">
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 relative">
         <div className="container mx-auto px-6">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <motion.h2
-                className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
-              >
-                What Clients Say
-              </motion.h2>
-              <p className="text-xl text-white/70 max-w-2xl mx-auto">
-                Don't just take my word for it - hear from satisfied clients.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-white">
+              Client Feedback
+            </h2>
+            <p className="text-white/60 max-w-xl mx-auto">
+              What people say about working with me
+            </p>
+          </div>
 
-          <div className="max-w-4xl mx-auto">
-            <AnimatePresence mode="wait">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {testimonials.map((testimonial, index) => (
               <motion.div
-                key={currentTestimonial}
-                initial={{ opacity: 0, x: 100, rotateY: 15 }}
-                animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                exit={{ opacity: 0, x: -100, rotateY: -15 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/[0.08] transition-colors"
               >
-                <Enhanced3DTiltCard>
-                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-                    <CardContent className="p-12 text-center">
-                      <motion.div
-                        className="flex justify-center mb-6"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                      >
-                        {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.5 + i * 0.1 }}
-                            whileHover={{ scale: 1.2, rotate: 180 }}
-                          >
-                            <Star className="w-6 h-6 text-yellow-400 fill-current" />
-                          </motion.div>
-                        ))}
-                      </motion.div>
-                      <motion.blockquote
-                        className="text-2xl text-white/90 mb-8 italic leading-relaxed"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        "{testimonials[currentTestimonial].content}"
-                      </motion.blockquote>
-                      <motion.div
-                        className="flex items-center justify-center gap-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
-                      >
-                        <motion.img
-                          src={testimonials[currentTestimonial].avatar || "/placeholder.svg"}
-                          alt={testimonials[currentTestimonial].name}
-                          className="w-16 h-16 rounded-full border-2 border-purple-500/30"
-                          whileHover={{ scale: 1.1, borderColor: "rgb(147 51 234 / 0.6)" }}
-                        />
-                        <div>
-                          <motion.h4 className="text-xl font-bold text-white" whileHover={{ color: "#c4b5fd" }}>
-                            {testimonials[currentTestimonial].name}
-                          </motion.h4>
-                          <p className="text-purple-400">{testimonials[currentTestimonial].role}</p>
-                        </div>
-                      </motion.div>
-                    </CardContent>
-                  </Card>
-                </Enhanced3DTiltCard>
-              </motion.div>
-            </AnimatePresence>
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
 
-            <motion.div
-              className="flex justify-center mt-8 gap-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              {testimonials.map((_, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial ? "bg-purple-400 scale-125" : "bg-white/30 hover:bg-white/50"
-                  }`}
-                  whileHover={{ scale: 1.3 }}
-                  whileTap={{ scale: 0.9 }}
-                />
-              ))}
-            </motion.div>
+                {/* Quote */}
+                <p className="text-white/80 text-sm leading-relaxed mb-6">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-semibold text-sm">
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="text-white font-medium text-sm">{testimonial.name}</p>
+                    <p className="text-white/50 text-xs">{testimonial.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -1536,7 +1508,7 @@ export default function Portfolio() {
       >
         <div className="container mx-auto px-6 text-center">
           <motion.p className="text-white/50" whileHover={{ color: "rgba(255, 255, 255, 0.8)" }}>
-             Built with passion and cutting-edge technology.
+            Built with passion and cutting-edge technology.
           </motion.p>
         </div>
       </motion.footer>
@@ -1678,6 +1650,6 @@ export default function Portfolio() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </div >
   )
 }
