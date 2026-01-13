@@ -790,8 +790,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Add the optimized animated cursor */}
-      <AnimatedCursor />
 
       {/* Enhanced Sticky Navigation */}
       <motion.nav
@@ -807,12 +805,7 @@ export default function Portfolio() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <motion.span
-                animate={{ rotateY: [0, 360] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatDelay: 5 }}
-              >
-                RONAK
-              </motion.span>
+              RONAK
             </motion.div>
             <div className="hidden md:flex space-x-8">
               {["home", "about", "projects", "services", "testimonials", "contact"].map((section, index) => (
@@ -849,23 +842,19 @@ export default function Portfolio() {
             lineThickness={1}
             linesColor="#392e4e"
             scanColor="#8B5CF6"
-            scanOpacity={0.5}
-            gridScale={0.12}
+            scanOpacity={0.4}
+            gridScale={0.15}
             lineStyle="solid"
-            lineJitter={0.05}
+            lineJitter={0}
             scanDirection="pingpong"
-            enablePost={true}
-            bloomIntensity={0.15}
-            bloomThreshold={0.1}
-            bloomSmoothing={0.3}
-            chromaticAberration={0.002}
-            noiseIntensity={0.02}
-            scanGlow={0.6}
+            enablePost={false}
+            noiseIntensity={0}
+            scanGlow={0.5}
             scanSoftness={2}
             scanPhaseTaper={0.15}
-            scanDuration={3.0}
-            scanDelay={1.5}
-            sensitivity={0.5}
+            scanDuration={4.0}
+            scanDelay={2.0}
+            sensitivity={0.3}
             snapBackDelay={300}
             className="w-full h-full"
           />
@@ -885,9 +874,9 @@ export default function Portfolio() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
-              I build <span className="text-white/80">e-commerce stores</span>, <span className="text-white/80">business websites</span>, 
-              and <span className="text-white/80">web applications</span> that drive results. 
-              With 20+ projects delivered, I help brands establish their online presence 
+              I build <span className="text-white/80">e-commerce stores</span>, <span className="text-white/80">business websites</span>,
+              and <span className="text-white/80">web applications</span> that drive results.
+              With 20+ projects delivered, I help brands establish their online presence
               using React, Next.js, and modern web technologies.
             </p>
 
@@ -937,7 +926,7 @@ export default function Portfolio() {
                 />
                 <motion.img
                   src="/images/ronak-portrait.jpg"
-                  alt="Ronak Ranja - Creative Web Developer"
+                  alt="Ronak Ranjan - Creative Web Developer"
                   className="relative rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 w-full"
                   whileHover={{ scale: 1.02, rotateY: 5 }}
                   transition={{ duration: 0.3 }}
@@ -1323,179 +1312,88 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Enhanced Contact Section */}
-      <section id="contact" className="py-32 relative">
+      {/* Contact Section */}
+      <section id="contact" className="py-24 relative">
         <div className="container mx-auto px-6">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <motion.h2
-                className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent"
-                whileInView={{
-                  textShadow: [
-                    "0 0 0px rgba(139, 92, 246, 0)",
-                    "0 0 20px rgba(139, 92, 246, 0.5)",
-                    "0 0 0px rgba(139, 92, 246, 0)",
-                  ],
-                }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                Let's Work Together
-              </motion.h2>
-              <p className="text-xl text-white/70 max-w-2xl mx-auto">
-                Ready to bring your vision to life? Let's discuss your next project.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-white">
+              Let's Connect
+            </h2>
+            <p className="text-white/60 max-w-xl mx-auto">
+              Have a project in mind? Let's discuss how I can help bring your ideas to life.
+            </p>
+          </div>
 
-          <ScrollReveal direction="up" delay={0.2}>
-            <div className="max-w-2xl mx-auto">
-              <Enhanced3DTiltCard>
-                <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/8 transition-all duration-300">
-                  <CardContent className="p-8">
-                    <motion.form
-                      className="space-y-6"
-                      variants={{
-                        hidden: { opacity: 0 },
-                        visible: {
-                          opacity: 1,
-                          transition: {
-                            staggerChildren: 0.1,
-                          },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
-                      <motion.div
-                        className="grid md:grid-cols-2 gap-6"
-                        variants={{
-                          hidden: { opacity: 0, y: 20 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                      >
-                        <div className="space-y-2">
-                          <label className="text-white/80">Name</label>
-                          <motion.div whileFocus={{ scale: 1.02 }}>
-                            <Input
-                              className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-purple-400 focus:ring-purple-400/20 focus:bg-white/10 transition-all duration-300"
-                              placeholder="Your name"
-                            />
-                          </motion.div>
-                        </div>
-                        <div className="space-y-2">
-                          <label className="text-white/80">Email</label>
-                          <motion.div whileFocus={{ scale: 1.02 }}>
-                            <Input
-                              type="email"
-                              className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-purple-400 focus:ring-purple-400/20 focus:bg-white/10 transition-all duration-300"
-                              placeholder="your@email.com"
-                            />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-
-                      <motion.div
-                        className="space-y-2"
-                        variants={{
-                          hidden: { opacity: 0, y: 20 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                      >
-                        <label className="text-white/80">Subject</label>
-                        <motion.div whileFocus={{ scale: 1.02 }}>
-                          <Input
-                            className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-purple-400 focus:ring-purple-400/20 focus:bg-white/10 transition-all duration-300"
-                            placeholder="Project inquiry"
-                          />
-                        </motion.div>
-                      </motion.div>
-
-                      <motion.div
-                        className="space-y-2"
-                        variants={{
-                          hidden: { opacity: 0, y: 20 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                      >
-                        <label className="text-white/80">Message</label>
-                        <motion.div whileFocus={{ scale: 1.02 }}>
-                          <Textarea
-                            className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-purple-400 focus:ring-purple-400/20 focus:bg-white/10 min-h-32 transition-all duration-300"
-                            placeholder="Tell me about your project..."
-                          />
-                        </motion.div>
-                      </motion.div>
-
-                      <motion.div
-                        variants={{
-                          hidden: { opacity: 0, y: 20 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                      >
-                        <MagneticButton
-                          type="submit"
-                          size="lg"
-                          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-6 text-lg rounded-xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 group relative overflow-hidden"
-                        >
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-                            animate={{ x: [-100, 100] }}
-                            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatDelay: 3 }}
-                          />
-                          <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                          Send Message
-                        </MagneticButton>
-                      </motion.div>
-                    </motion.form>
-                  </CardContent>
-                </Card>
-              </Enhanced3DTiltCard>
-
-              <motion.div
-                className="flex justify-center gap-6 mt-12"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.1,
-                    },
-                  },
-                }}
-                initial="hidden"
-                whileInView="visible"
+          <div className="max-w-3xl mx-auto">
+            {/* Main Contact Cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
+              {/* Email Card */}
+              <motion.a
+                href="mailto:ronakranjan623@gmail.com"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/[0.08] hover:border-purple-500/30 transition-all duration-300 flex items-center gap-4"
               >
-                {[
-                  { icon: <Github className="w-6 h-6" />, href: "#", color: "hover:text-gray-300" },
-                  { icon: <Linkedin className="w-6 h-6" />, href: "#", color: "hover:text-blue-400" },
-                  { icon: <Twitter className="w-6 h-6" />, href: "#", color: "hover:text-sky-400" },
-                  { icon: <Mail className="w-6 h-6" />, href: "#", color: "hover:text-red-400" },
-                ].map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    className={`w-14 h-14 bg-white/5 border border-white/20 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 group social-icon ${social.color}`}
-                    variants={{
-                      hidden: { opacity: 0, scale: 0 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
-                    whileHover={{
-                      scale: 1.2,
-                      y: -5,
-                      boxShadow: "0 10px 25px rgba(139, 92, 246, 0.3)",
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
-                      {social.icon}
-                    </motion.div>
-                  </motion.a>
-                ))}
-              </motion.div>
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-white/50 text-sm mb-1">Email me at</p>
+                  <p className="text-white font-medium group-hover:text-purple-400 transition-colors">ronakranjan623@gmail.com</p>
+                </div>
+              </motion.a>
+
+              {/* WhatsApp/Phone Card */}
+              <motion.a
+                href="https://wa.me/919135571566"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                viewport={{ once: true }}
+                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/[0.08] hover:border-green-500/30 transition-all duration-300 flex items-center gap-4"
+              >
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                  <Send className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-white/50 text-sm mb-1">Message on WhatsApp</p>
+                  <p className="text-white font-medium group-hover:text-green-400 transition-colors">+919135571566</p>
+                </div>
+              </motion.a>
             </div>
-          </ScrollReveal>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6"
+            >
+              <p className="text-white/50 text-sm text-center mb-5">Or find me on</p>
+              <div className="flex justify-center gap-4">
+                <a
+                  href="https://github.com/ronakranjan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-white/5 border border-white/20 rounded-xl flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ronak-ranjan-3a9a38340/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-white/5 border border-white/20 rounded-xl flex items-center justify-center text-white/60 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
