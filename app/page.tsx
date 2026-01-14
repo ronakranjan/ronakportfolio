@@ -13,6 +13,7 @@ import {
   Github,
   Linkedin,
   Twitter,
+  Instagram,
   Mail,
   ExternalLink,
   Star,
@@ -604,6 +605,17 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
+      title: "Illustro Webs",
+      category: "Digital Solutions",
+      description:
+        "A full-service digital solutions company providing web development, design, and digital marketing services to help businesses establish a strong online presence and achieve their digital goals.",
+      image: "/images/ilustrowebs.png",
+      tech: ["Web Solutions", "Digital Marketing", "Next.js"],
+      link: "https://illustrowebs.in",
+      hasLiveDemo: true,
+    },
+    {
+      id: 2,
       title: "MG Hair Pvt Ltd",
       category: "E-commerce",
       description:
@@ -1391,25 +1403,20 @@ export default function Portfolio() {
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
+                <a
+                  href="https://www.instagram.com/thatblackflagg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-white/5 border border-white/20 rounded-xl flex items-center justify-center text-white/60 hover:text-pink-400 hover:bg-pink-500/10 hover:border-pink-500/30 transition-all duration-300"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Footer */}
-      <motion.footer
-        className="py-12 border-t border-white/10 relative"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container mx-auto px-6 text-center">
-          <motion.p className="text-white/50" whileHover={{ color: "rgba(255, 255, 255, 0.8)" }}>
-            Built with passion and cutting-edge technology.
-          </motion.p>
-        </div>
-      </motion.footer>
 
       {/* Enhanced Project Modal */}
       <AnimatePresence>
